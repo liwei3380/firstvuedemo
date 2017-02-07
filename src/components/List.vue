@@ -1,0 +1,58 @@
+<!-- List.vue -->
+<template>
+	<li class="sec_li">
+		<router-link class="lp_li_a" :to="to">
+			<div class="lp_li_imgWrap">
+				<img :src="imgurl" alt="">
+			</div>
+			<p class="lp_li_name">{{title}}</p>
+			<p class="lp_li_price">{{price}}</p>
+		</router-link>
+	</li>
+</template>
+<style scoped>  
+    .sec_li {  
+        float: left;  
+        width: 50%;  
+        margin-bottom: 0.1rem;  
+    }  
+    .lp_li_a {  
+        display: block;  
+        padding: 0.3rem 0;  
+        margin: 0 0.05rem;  
+        text-align: center;  
+        background: #fff;  
+    }  
+    .lp_li_imgWrap {  
+        padding: 0.24rem 0;  
+    }  
+    .lp_li_imgWrap > img {  
+        width: auto;  
+        height: 2.3rem;  
+    }  
+    .lp_li_name {  
+        height: 0.5rem;  
+        line-height: 0.5rem;  
+        font-size: 16px;  
+        color: #333;  
+        text-align: center;
+    }  
+    .lp_li_price {  
+        height: 0.5rem;  
+        line-height: 0.5rem;  
+        font-size: 16px;  
+        color: #fb3b3b;  
+        text-align: center;
+    }  
+</style>  
+  
+<script>  
+    export default {  
+        props: ['price', 'title', 'imgurl', 'id'],
+        data () {
+        	return {
+        		to:'/detail/'+this.id,
+        	};
+        }  
+    }  
+</script> 

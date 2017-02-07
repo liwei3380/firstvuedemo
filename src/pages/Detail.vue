@@ -1,0 +1,64 @@
+<!-- Detail.vue -->  
+<template>  
+    <div class="detail">  
+        <detail-header></detail-header>  
+        <img :src="imgurl" alt="">  
+        <p>{{intro}}</p>  
+        <!-- <p class="detail-p-title"><span class="detail-p-title-span">推荐御魂:</span></p>   -->
+        <p>{{yuhun}}</p>
+    </div>  
+</template>  
+<style>  
+    .detail {  
+        padding: 0.24rem;  
+        font-size: 12px;  
+    }  
+    img {  
+        display: block;  
+        width: 65%;  
+        margin: 0 auto 0.2rem;  
+    }  
+    p {  
+        font-size: 14px;  
+        line-height: 0.5rem;  
+        text-align: justify;  
+        padding-bottom: 0.24rem;  
+        color:#666;
+        
+    }  
+    .detail-p-title{
+        box-sizing: border-box;
+        border-bottom: 1px solid #ddd;
+        color:#111;
+        padding-bottom: 0;
+        background: white;
+    }
+    .detail-p-title-span{
+        padding:0.15rem;
+        background:#eee;
+    }
+</style>  
+<script>  
+    import DetailHeader from '../components/DetailHeader'  
+    const items = [  
+                    { id: "0", price: "SR", title: "飒" , imgurl: require("../assets/img/sa_big.png"), intro:'姑获鸟最强SR式神，斗技、刷图都是一流，带狗粮最佳式神，推荐优先培养。带针女4件暴击2件。', yuhun:'针女效果：造成暴击时有50%概率对目标造成目标最大生命值10%的伤害，最高造成自身攻击力120%伤害。 姑获鸟标配御魂，没有之一。'},  
+                    { id: "1", price: "SSR", title: "茨木童子" , imgurl: require("../assets/img/cmtz_big.png"), intro:'茨木童子可以说是目前最实用的SSR式神，单体爆发高，同时击杀后还有溅射伤害，另外溅射伤害是可以触发破势效果的。茨木平民推荐堆暴击，土豪可以堆暴击伤害。', yuhun:'破势效果：对生命值高于70%的单位造成额外40%的伤害。可以方便茨木对单体打出高额伤害。破势4件套可以帮助茨木达到满暴击，而套装效果可以开局击杀对方1个目标，或者压低其血量，利用神乐的疾风，打出二轮的溢出伤害。'},  
+                    { id: "2", price: "SSR", title: "酒吞童子" , imgurl: require("../assets/img/jttz_big.png"), intro:'酒吞童子在SSR式神里并不出彩，因为不适合现在的一波流，但酒吞真的是抗压反击流的强者。战局拖越久，酒吞越强。轮入道是酒吞最佳御魂，当然如果怕酒吞被秒，可以用地藏，但是主属性挑选攻击/暴击', yuhun:'搭配点评：轮入道效果：行动结束时，有20%的概率获得一次额外行动机会。轮入道是酒吞童子标配，4层BUFF后，5段普攻打谁谁疼。而且有金鱼的旗子，可以回2次血量。'},  
+                    { id: "3", price: "SSR", title: "妖刀姬" , imgurl: require("../assets/img/ydj_big.png"), intro:'酒吞童子在SSR式神里并不出彩，因为不适合现在的一波流，但酒吞真的是抗压反击流的强者。战局拖越久，酒吞越强。轮入道是酒吞最佳御魂，当然如果怕酒吞被秒，可以用地藏，但是主属性挑选攻击/暴击', yuhun:'搭配点评：轮入道效果：行动结束时，有20%的概率获得一次额外行动机会。轮入道是酒吞童子标配，4层BUFF后，5段普攻打谁谁疼。而且有金鱼的旗子，可以回2次血量。'},  
+                    { id: "4", price: "SSR", title: "青行灯" , imgurl: require("../assets/img/qxd_big.png"), intro:'灯姐没有特别强的输出，但是大招的伤害还是不错，搭配破势可以打出不错的伤害，建议还是4破势2暴击装，堆输出，另外吸鬼火在斗技有时候是有很大作用的。', yuhun:'破势效果：对生命值高于70%的单位造成额外40%的伤害。青行灯速度快，适合打先手压血线，虽然青行攻击成长一般，但是AOE攻击挺高的，而且有吸收对方鬼火的效果。'},  
+                    { id: "5", price: "SSR", title: "大天狗" , imgurl: require("../assets/img/dtg_big.png"), intro:'大天狗也是SSR式神里面非常实用的，大招4段AOE可以说和针女是绝配。建议堆满暴击，带针女4件套。', yuhun:'针女效果：造成暴击时有50%概率对目标造成目标最大生命值10%的伤害，最高造成自身攻击力120%伤害。大天狗是4段AOE，很容易触发针女，当然暴击率最好在80%以上。'},  
+                    { id: "6", price: "SSR", title: "荒川" , imgurl: require("../assets/img/hc_big.png"), intro:'荒川之主又被称为SSR的咸鱼王，单体输出不如妖刀，甚至比白狼难用，实在没有SSR或者单体输出，可以培养他。', yuhun:'破势效果：对生命值高于70%的单位造成额外40%的伤害。荒川之主单点2段，带破势效果不错，唯一不好的地方是，第一段如果把目标打到70%以下，第2段就不触发破势了，但其他御魂并不适合荒川。轮入道虽然不错，但是套装不加暴击，而荒川更适合堆暴击伤害，来造成单回合的高爆发。。'},  
+                    { id: "7", price: "SSR", title: "小鹿男" , imgurl: require("../assets/img/xln_big.png"), intro:'小鹿男虽然是SSR，但不值得培养，他的辅助作用，需要场上有式神死亡，并不适用。当然小鹿男最佳御魂就是地藏了。', yuhun:'地藏效果：受到暴击时，会生成一个能够吸收生命值15%的伤害的护盾。小鹿男需要的是提高生存能力，所以地藏是最佳选择。'},  
+                ]
+    export default {  
+        components: {  
+            DetailHeader  
+        },
+        data () {
+            return {
+                imgurl: items[parseInt(this.$route.params.id)].imgurl,
+                intro: items[parseInt(this.$route.params.id)].intro,
+                yuhun: items[parseInt(this.$route.params.id)].yuhun,}
+        }
+    }  
+</script>  
