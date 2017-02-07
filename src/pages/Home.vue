@@ -68,8 +68,6 @@
 
                 this.items = this.items.map(getitem);
 
-                /*var url ='cmtz_big.png';
-                this.items[0].imgurl =  require('../assets/img/'+url);*/
             })  
         }  
     }  
