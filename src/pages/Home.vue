@@ -58,10 +58,16 @@
             this.$http.get('/api/shishen').then((data) => {  
                 // 由于请求成功返回的是Promise对象，我们要从data.body.data拿到books数组  
                 this.items = data.body.data;
-                for (var i = 0; i < this.items.length; i++) {
-                    var url = this.items[i].imgurl;
-                    this.items[i].imgurl = require('../assets/img/' + url);
+
+                const geturl = item => item.imgurl
+                const requireurl = url => require('../assets/img/' + url)
+                const getitem = item => {
+                    item.imgurl = requireurl(geturl(item));
+                    return item;
                 }
+
+                this.items = this.items.map(getitem);
+
                 /*var url ='cmtz_big.png';
                 this.items[0].imgurl =  require('../assets/img/'+url);*/
             })  
